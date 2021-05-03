@@ -1,11 +1,8 @@
-{% extends 'djangoapp/base.html' %}
-{% block content %} 
-
-<h1>helo</h1>
-{% endblock %}
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <head>
     <meta charset="UTF-8">
     <title>Dealership Review</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -18,18 +15,10 @@
 
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
 </head>
-
     <body>
-    Add a nav bar here
-    
-
-    Add a dealer table here
-
+    {% include 'djangoapp/navbar.html' %} 
+    {% block content %}
+    {% endblock %}
     </body>
-
-</html> -->
-
-
+</html>
