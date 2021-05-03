@@ -19,13 +19,19 @@ logger = logging.getLogger(__name__)
 
 # Create an `about` view to render a static about page
 def about(request):
-    return render(request, "djangoapp/about_us.html")
+    context = {
+        "title": "About Us"
+    }
+    return render(request, "djangoapp/about_us.html", context)
 
 
 # Create a `contact` view to return a static contact page
-#def contact(request):
+
 def contact(request):
-    return render(request, "djangoapp/contact_us.html")
+    context = {
+    "title": "Contact Us"
+    }
+    return render(request, "djangoapp/contact_us.html", context)
 
 # Create a `login_request` view to handle sign in request
 def login_request(request):
@@ -40,7 +46,7 @@ def login_request(request):
             return redirect("djangoapp:index")
         context["message"] = "Invalid username or password"
         return render(request, "djangoapp/index.html", context)
-    return render(request, "djangoapp/index.html")
+    return render(request, "djangoapp/index.html", context)
 
 
 
@@ -52,7 +58,9 @@ def logout_request(request):
 
 # Create a `registration_request` view to handle sign up request
 def registration_request(request):
-    context = {}
+    context = {
+        "title": "User Registration"
+    }
     if request.method == "POST":
         username = request.POST["username"]
         first_name = request.POST["firstname"]
