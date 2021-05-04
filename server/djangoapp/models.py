@@ -44,11 +44,45 @@ class CarModel(models.Model):
     year = models.DateField(default=now)
 
     def __str__(self):
-        return f"Model: {self.name}, Description: {self.description}"
+        return f"Model: {self.name}, Description: {self.description}, Type: {self.type_of_car}, Year: {self.year}"
 
 
 
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
+class CarDealer:
+
+    def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+
+        self.address = address
+        self.city = city
+        self.full_name = full_name
+        self.id = id
+        self.lat = lat
+        self.long = long
+        self.short_name = short_name
+        self.st = st
+        self.zip = zip
+
+    def __str__(self):
+        return "Dealer name: " + self.full_name
+
 
 
 # <HINT> Create a plain Python class `DealerReview` to hold review data
+class DealerReview:
+
+    def __init__(self, car_model, car_year, car_make, dealership, id, name, purchase, purchase_date, review):
+        
+        self.car_model = car_model
+        self.car_year = car_year
+        self.dealer_id = dealership
+        self.id = id
+        self.name = name
+        self.purchase = purchase
+        self.purchase_date = purchase_date
+        self.review = review
+        self.car_make = car_make
+        self.sentiment = ""
+
+    def __str__(self):
+        return "Dealer name: " + self.name
