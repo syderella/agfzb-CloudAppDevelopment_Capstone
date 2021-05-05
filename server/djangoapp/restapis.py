@@ -99,7 +99,6 @@ def analyze_review_sentiments(dealer_review):
     api_key = "32Tk7C3ELJ_XhREGh9pSYRXcigHkO_VBRbNg9W_cpxEN"
     url = "https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/082e1174-aa72-4f50-9b20-375cdb66c0e5/v1/analyze"
     
-
     response = get_request(
         url=url,
         api_key=api_key,
@@ -111,4 +110,6 @@ def analyze_review_sentiments(dealer_review):
     return response["sentiment"]["document"]["label"]
 
 
-
+def post_request(url, json_payload, **kwargs):
+    respond = requests.post(url, params=kwargs, json=json_payload)
+    return respond

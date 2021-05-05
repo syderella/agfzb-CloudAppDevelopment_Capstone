@@ -3,8 +3,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 # from .models import related models
-from .restapis import get_dealers_from_cf, get_dealers_reviews_from_cf
+from .restapis import get_dealers_from_cf, get_dealers_reviews_from_cf, post_request
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from datetime import datetime
 import logging
@@ -99,4 +100,24 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 # def add_review(request, dealer_id):
 # ...
+
+# @login_required
+def add_review(request, dealer_id):
+    if request.method == "POST":
+        url = "https://8fd1fa9c.us-south.apigw.appdomain.cloud/api/review"
+        review = {
+            "time": datetime.utcnow().isoformat(),
+            "name": "Test from the Browser",
+            "dealership": 11,
+            "review": "Test review",
+            "purchase": "purchase",
+            "purchase_date": "purchase_date",
+            "car_make": "car_make",
+            "car_model": "car_model",
+            "car_year": "car_year"
+        }
+        json_payload = { "review": review }
+        response = post_request(url, json_payload, dealerId=dealer_id)
+        return HttpResponse(response)
+    return render(request, "djangoapp/add_review.html")
 
