@@ -16,10 +16,8 @@ logger = logging.getLogger(__name__)
 
 review_num = 0
 dealerships = []
-# Create your views here.
 
 
-# Create an `about` view to render a static about page
 def about(request):
     context = {
         "title": "About Us"
@@ -27,15 +25,13 @@ def about(request):
     return render(request, "djangoapp/about_us.html", context)
 
 
-# Create a `contact` view to return a static contact page
-
 def contact(request):
     context = {
     "title": "Contact Us"
     }
     return render(request, "djangoapp/contact_us.html", context)
 
-# Create a `login_request` view to handle sign in request
+
 def login_request(request):
     context = {}
     if request.method == "POST":
@@ -44,21 +40,17 @@ def login_request(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            # context["message"] = "Login Successful"
             return redirect("djangoapp:index")
         context["message"] = "Invalid username or password"
-        return render(request, "djangoapp/index.html", context)
+        return redirect("djangoapp:index")
     return render(request, "djangoapp/index.html", context)
 
 
-
-
-# Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
     return redirect("djangoapp:index")
 
-# Create a `registration_request` view to handle sign up request
+
 def registration_request(request):
     context = {
         "title": "User Registration"
@@ -79,7 +71,7 @@ def registration_request(request):
             return redirect("djangoapp:index")
     return render(request, "djangoapp/registration.html", context)
 
-# Update the `get_dealerships` view to render the index page with a list of dealerships
+
 def get_dealerships(request):
     global dealerships
     context = {}
@@ -89,12 +81,13 @@ def get_dealerships(request):
         context["dealership_list"] = dealerships
         return render(request, "djangoapp/index.html", context)
 
+
 def get_dealer(dealer_id):
     for dealer in dealerships:
         if dealer.id == dealer_id:
             return dealer
 
-# Create a `get_dealer_details` view to render the reviews of a dealer
+
 def get_dealer_details(request, dealer_id):
     global review_num
     dealer = get_dealer(dealer_id)
@@ -110,10 +103,6 @@ def get_dealer_details(request, dealer_id):
         context["review_list"] = reviews
         return render(request, "djangoapp/dealer_details.html", context) 
 
-
-# Create a `add_review` view to submit a review
-# def add_review(request, dealer_id):
-# ...
 
 @login_required
 def add_review(request, dealer_id):
