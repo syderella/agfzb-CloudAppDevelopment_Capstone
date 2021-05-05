@@ -9,7 +9,7 @@
         <h6>Enter the review content:</h6>
         <textarea class="form-control" id="content" name="content" rows="2" required></textarea> <br/>
         
-        <h6> <input class="checkbox" type="checkbox" name="purchasecheck" id="purchasecheck" value=True> Has purchased the car from {{dealer.name}}? <small>(select purchased car information below if checked)</small></h6>
+        <h6> <input class="checkbox" type="checkbox" name="purchasecheck" id="purchasecheck" value=True> Has purchased the car from {{dealer.full_name}}? <small>(select purchased car information below if checked)</small></h6>
         <h6>Select your car (model-make-year): 
         <select name="car" id="car" class="form-select" required>
             {% for car in cars %}
