@@ -11,10 +11,10 @@
             <li>
                 <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
                 {% if dealer_id %}
-                <a class="btn btn-link" href="{% url 'djangoapp:add-review-view' dealer_id %}">Post Review</a>
+                <a class="btn btn-link text-info" href="{% url 'djangoapp:add-review-view' dealer_id %}">Post Review</a>
                 {% endif %}
                
-                <a class="btn btn-link" href="{% url 'djangoapp:logout-view' %}">Logout</a>
+                <a class="btn btn-outline-info" href="{% url 'djangoapp:logout-view' %}">Logout</a>
             </li>
             {% elif not user.is_authenticated and title != "User Registration" %}
             <li>
