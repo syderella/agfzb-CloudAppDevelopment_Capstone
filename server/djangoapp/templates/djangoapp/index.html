@@ -1,7 +1,7 @@
 {% extends 'djangoapp/base.html' %}
 {% block content %} 
-
- <table class="table" id="table" data-filter-control="true">
+<div class="container bg-dark" style="border-radius:40px ;padding:70px; margin-top: 40px;">
+ <table class="table text-white" id="table" data-filter-control="true">
         <thead>
             <tr>
                 <th data-field="id">ID</th>
@@ -16,7 +16,7 @@
             {% for dealer in dealership_list %}
                 <tr>
                     <td>{{dealer.id}}</td>
-                    <td><a href="{% url 'djangoapp:dealer-details-view' dealer.id %}">{{dealer.full_name}}</a></td>
+                    <td><a class="text-info" href="{% url 'djangoapp:dealer-details-view' dealer.id %}">{{dealer.full_name}}</a></td>
                     <td>{{dealer.city}}</td>
                     <td>{{dealer.address}}</td>
                     <td>{{dealer.zip}}</td>
@@ -25,6 +25,6 @@
             {% endfor %}
         </tbody>
     </table>
-
+</div>
 
 {% endblock %}

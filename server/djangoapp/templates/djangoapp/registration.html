@@ -1,19 +1,19 @@
 {% extends 'djangoapp/base.html' %}
 {% block content %}
-
+<div class="container bg-dark" style="border-radius:40px ;padding:60px; margin-top: 40px;">
 <form action="{% url 'djangoapp:registration-view' %}" method="post">
     <div class="container"> 
         {% csrf_token %}
-        <h1>Sign Up</h1>
-        <hr>
+        <h1 class="text-white">Sign Up</h1>
+         <hr style="background-color: lightblue;" />
         <div class="form-group"> 
-            <label for="username"><b>User Name</b></label>
+            <label for="username" class="text-info"><b>User Name</b></label>
             <input type="text" class="form-control" placeholder="Enter User Name: " name="username" required> 
-            <label for="firstname"><b>First Name</b></label>
+            <label for="firstname" class="text-info"><b>First Name</b></label>
             <input type="text" class="form-control" placeholder="Enter First Name: " name="firstname" required> 
-            <label for="lastname"><b>Last Name</b></label>
+            <label for="lastname" class="text-info"><b>Last Name</b></label>
             <input type="text" class="form-control" placeholder="Enter Last Name: " name="lastname" required> 
-            <label for="psw"><b>Password</b></label>
+            <label for="psw" class="text-info"><b>Password</b></label>
             <input type="password" class="form-control" placeholder="Enter Password: " name="psw" required> 
             {% if message %}
             <div class="alert alert-warning"> 
@@ -21,10 +21,11 @@
             </div>
             {% endif %}
             <br/>
-            <button class="btn btn-primary" type="submit">Sign up</button> 
+            <button class="btn btn-info btn-lg btn-block" type="submit">Sign up</button> 
         </div>
     </div>
 </form>
+</div>
 {% endblock %}
 
 

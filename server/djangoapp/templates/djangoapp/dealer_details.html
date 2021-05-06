@@ -2,8 +2,10 @@
 {% block content %} 
  <!-- Add reviews as cards -->
 
- <div class="container">
-      <h4>Reviews for <span class="font-weight-bold">{{dealer.full_name}}</span></h4>
+<div class="container bg-dark" style="border-radius:40px ;padding:60px; margin-top: 40px;">
+      <h4 class="text-info">Reviews for <span class="font-weight-bold text-white">{{dealer.full_name}}</span></h4>
+      <br/>
+      <hr style="background-color: lightblue;" />
     <div class="card-columns">
         {% for review in review_list %}
         <div class="card">
